@@ -1,5 +1,5 @@
-set = vim.opt;
-cmd = vim.cmd;
+local set = vim.opt;
+local cmd = vim.cmd;
 
 set.number = true;
 set.relativenumber= true;
