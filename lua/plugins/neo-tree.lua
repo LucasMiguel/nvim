@@ -8,6 +8,7 @@ return {
         "MunifTanjim/nui.nvim",
         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
       },
+      priority = 10000,
       config = function ()
         require('neo-tree').setup({
           close_if_last_window = false,
@@ -23,7 +24,6 @@ return {
           },
           window = { width = 30 },
         })
-        
         local opts = {noremap = true, silent = true}
 
         vim.keymap.set("n", "<leader>b", ":Neotree toggle<CR>", opts)

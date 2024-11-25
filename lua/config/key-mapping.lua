@@ -10,5 +10,5 @@ vim.g.mapleader = " "
 
 -- mapping
 
-kmap('n', '<leader>q', ':q<CR>', opts)
-kmap('n', '<leader>w', ':w<CR>', opts)
+kmap({'n', 'v'}, '<leader>q', ':q<CR>', opts)
+kmap({'n', 'v'}, '<leader>w', ':w<CR>', opts)
