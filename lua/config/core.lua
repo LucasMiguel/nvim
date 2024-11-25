@@ -23,7 +23,7 @@ set.updatetime = 250
 --set.wildmenu = true
 set.wrap = true
 
-cmd.colorscheme('tokyonight');
+cmd.colorscheme('material');
 cmd([[
   filetype plugin indent on
   syntax on
