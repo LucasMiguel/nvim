@@ -1,3 +1,3 @@
-require("config.lazy");
-require("config.core");
-
+require("config.key-mapping")
+require("config.lazy")
+require("config.core")
