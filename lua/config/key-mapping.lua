@@ -8,7 +8,9 @@ local opts = { noremap = true, silent = true }
 -- Leader
 vim.g.mapleader = " "
 
--- mapping
+-- mappingkey
 
 kmap({'n', 'v'}, '<leader>q', ':q<CR>', opts)
 kmap({'n', 'v'}, '<leader>w', ':w<CR>', opts)
+kmap({'n', 'v'}, '<leader>.', ':bnext<CR>', opts)
+kmap({'n', 'v'}, '<leader>,', ':bprevious<CR>', opts)

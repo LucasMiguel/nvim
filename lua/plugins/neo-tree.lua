@@ -8,7 +8,7 @@ return {
         "MunifTanjim/nui.nvim",
         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
       },
-      priority = 10000,
+      priority = 100000,
       config = function ()
         require('neo-tree').setup({
           close_if_last_window = false,

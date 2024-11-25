@@ -1,11 +1,9 @@
 local set = vim.opt;
 local cmd = vim.cmd;
 
-vim.g.loaded_netrwPlugin = 0
 
 set.number = true;
 set.relativenumber= true;
-set.termguicolors = true;
 set.shiftwidth = 2;
 set.smarttab = true;
 set.tabstop = 2;
