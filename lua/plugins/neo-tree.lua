@@ -38,7 +38,7 @@ return {
         vim.keymap.set("n", "<leader>b", ":Neotree toggle<CR>", opts)
         vim.keymap.set("n", "<leader>e", ":Neotree focus<CR>", opts)
         vim.keymap.set("n", "<leader>ee", "<C-w>l", opts)
-        vim.keymap.set({'n', 'v'}, "<leader>er", ":Neotree reveal<CR>", opts)
+        vim.keymap.set({'n', 'v'}, "\\", ":Neotree reveal<CR>", opts)
 
       end
   }

@@ -45,7 +45,7 @@ return {{
 			    "jsonls",
 			    "grammarly",
 			    "intelephense",
-			    "phpactor",
+			    -- "phpactor",
 			    "sqlls",
 			    "vimls",
 		    },
@@ -85,7 +85,7 @@ return {{
 			    jsonls = {},
 			    grammarly = {},
 			    intelephense = {},
-			    phpactor = {},
+			    -- phpactor = {},
 			    sqlls = {},
 	                    vimls = {}
 		}
