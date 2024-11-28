@@ -30,6 +30,7 @@ return {{
 			mapping = {
 				["<Tab>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert},
 				["<S-Tab>"] = cmp.mapping.select_prev_item {behavior = cmp.SelectBehavior.Insert},
+        ['<C-Space>'] = cmp.mapping.complete(),
 				["<CR>"] = cmp.mapping(
 					cmp.mapping.confirm {
 						behavior = cmp.ConfirmBehavior.Insert,
@@ -43,6 +44,20 @@ return {{
 						require("luasnip").lsp_expand(args.body)
 					end,
 			},
+      formatting = {
+        format = lspkind.cmp_format({
+          mode = 'symbol', -- show only symbol annotations
+          maxwidth = {
+            menu = 50, -- leading text (labelDetails)
+            abbr = 50, -- actual suggestion item
+          },
+          ellipsis_char = '...',  
+          show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+         before = function (entry, vim_item)
+            return vim_item
+          end
+        })
+      }
 		}
 	end,
 }}
