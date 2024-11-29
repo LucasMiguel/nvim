@@ -9,6 +9,7 @@ return {{
 		"hrsh7th/cmp-path",
 		{ "L3MON4D3/LuaSnip", build = "make install_jsregexp"},
 		"saadparwaiz1/cmp_luasnip",
+    "roginfarrer/cmp-css-variables",
 	},
 	config = function()
 		vim.opt.completeopt = { "menu", "menuone", "noselect"}
@@ -26,6 +27,7 @@ return {{
 				{name = "path"},
 				{name = "buffer"},
 				{name = "luasnip"},
+        {name = "css-variables"}
 			},
 			mapping = {
 				["<Tab>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert},

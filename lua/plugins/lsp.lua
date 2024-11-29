@@ -24,13 +24,13 @@ return {{
 			    "rust_analyzer",
 			    "angularls",
 			    "bashls",
+          "ast_grep",
 			    "clangd",
 			    "css_variables",
 			    "cssls",
 			    "cssmodules_ls",
 			    "unocss",
 			    -- "tailwindcss",
-			    "ast_grep",
 			    "docker_compose_language_service",
 			    "dockerls",
 			    "html",
@@ -52,7 +52,12 @@ return {{
 		});
 
 		local lspconfig = require('lspconfig');
-		local capabilities = nil;
+		local capabilities = require("cmp_nvim_lsp").default_capabilities();
+
+    -- require('lspconfig').cssls.setup {
+      -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    -- }
+
 		local on_attach = function()
 			local bufopts = {noremap=true, silent=true, buffer=bufnr}
 			vim.keymap.set({'v','n'}, 'gd', vim.lsp.buf.definition, bufopts)
@@ -62,15 +67,16 @@ return {{
 		local servers = {
 			    lua_ls = {}, 
 			    rust_analyzer = {},
-			    angularls = {},
-			    bashls = {},
+			    angularls = {},			    
+			    bashls = {},			    
+          ast_grep = {},
 			    clangd = {},
-			    css_variables = {},
+          css_variables= {},
 			    cssls = {},
 			    cssmodules_ls = {},
 			    unocss = {},
 			    -- tailwindcss = {},
-			    ast_grep = {},
+
 			    docker_compose_language_service = {},
 			    dockerls = {},
 			    html = {},
@@ -87,7 +93,7 @@ return {{
 			    intelephense = {},
 			    -- phpactor = {},
 			    sqlls = {},
-	                    vimls = {}
+          vimls = {},
 		}
 
 		for server, config in pairs(servers) do
