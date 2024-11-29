@@ -25,10 +25,12 @@ return{{
 		local set = vim.keymap.set;
 		set("n", "<leader>ff", builtin.find_files)
 		set("n", "<leader>ft", builtin.help_tags)
-		set("n", "<leader>f/", builtin.live_grep)
+		set("n", "<leader>fw", builtin.live_grep)
 		set("n", "<leader>fb", builtin.current_buffer_fuzzy_find)
-		set("n", "<leader>fw", builtin.grep_string)
-		set("n", "<leader>en", function ()
+		set("n", "<leader>fs", builtin.grep_string)
+    set("n", "<leader>fo", builtin.lsp_document_symbols)
+    set("n", "<leader>fg", builtin.git_commits)
+		set("n", "<leader>fn", function ()
 			builtin.find_files { cwd = vim.fn.stdpath "config" }
 		end)
 	end

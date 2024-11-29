@@ -22,6 +22,7 @@ return {
               hide_dotfiles = false,
               hide_gitignored = false,
             },
+            hijack_netrw_behavior = "disabled"
           },
           window = { width = 30 },
           buffers = {
@@ -35,11 +36,12 @@ return {
         })
         local opts = {noremap = true, silent = true}
 
-        vim.keymap.set("n", "<leader>b", ":Neotree toggle<CR>", opts)
-        vim.keymap.set("n", "<leader>e", ":Neotree focus<CR>", opts)
-        vim.keymap.set("n", "<leader>ee", "<C-w>l", opts)
+        vim.keymap.set({"n", "v"}, "<leader>e", ":Neotree focus<CR>", opts)
+        vim.keymap.set({"n", "v"}, "<leader>ee", ":Neotree toggle<CR>", opts)
+        vim.keymap.set({"n", "v"}, "<leader>ew", "<C-w>l", opts)
         vim.keymap.set({'n', 'v'}, "\\", ":Neotree reveal<CR>", opts)
 
+        vim.cmd.normal(":Neotree close<CR>")
       end
   }
 }
