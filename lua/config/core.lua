@@ -1,12 +1,11 @@
 local set = vim.opt;
 local cmd = vim.cmd;
 
-
 set.number = true;
 set.relativenumber= true;
-set.shiftwidth = 2;
+set.shiftwidth = 4;
 set.smarttab = true;
-set.tabstop = 2;
+set.tabstop = 4;
 set.clipboard = "unnamedplus"
 set.completeopt = "noinsert,menuone,noselect"
 set.cursorline = true

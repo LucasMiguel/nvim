@@ -54,21 +54,25 @@ return {{
 		local lspconfig = require('lspconfig');
 		local capabilities = require("cmp_nvim_lsp").default_capabilities();
 
-    -- require('lspconfig').cssls.setup {
-      -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    -- }
-
-		local on_attach = function()
+	 	local on_attach = function()
 			local bufopts = {noremap=true, silent=true, buffer=bufnr}
 			vim.keymap.set({'v','n'}, 'gd', vim.lsp.buf.definition, bufopts)
 			vim.keymap.set({'v', 'n'}, 'gr', vim.lsp.buf.references, bufopts)
 		end;
 		
 		local servers = {
-			    lua_ls = {}, 
-			    rust_analyzer = {},
-			    angularls = {},			    
-			    bashls = {},			    
+			    lua_ls = {
+              settings = {
+              Lua = {
+                completion = {
+                  callSnippet = "Replace"
+                }
+              }
+            }
+          },
+          rust_analyzer = {},
+			    angularls = {},
+			    bashls = {},
           ast_grep = {},
 			    clangd = {},
           css_variables= {},
@@ -76,7 +80,6 @@ return {{
 			    cssmodules_ls = {},
 			    unocss = {},
 			    -- tailwindcss = {},
-
 			    docker_compose_language_service = {},
 			    dockerls = {},
 			    html = {},
