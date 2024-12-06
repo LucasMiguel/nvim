@@ -3,7 +3,7 @@ local cmd = vim.cmd;
 
 set.number = true;
 set.relativenumber= true;
-set.shiftwidth = 4;
+set.shiftwidth = 2;
 set.smarttab = true;
 set.tabstop = 4;
 set.clipboard = "unnamedplus"
@@ -21,6 +21,8 @@ set.ttimeoutlen = 0
 set.updatetime = 250
 set.wildmenu = true
 set.wrap = true
+set.spell = true
+set.spelllang = 'pt_br'
 
 cmd.colorscheme("nightfox")
 
