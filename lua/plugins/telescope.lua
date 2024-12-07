@@ -40,14 +40,14 @@ return{{
 		local builtin = require "telescope.builtin"
 		-- mapeamento de atalhos
 		local set = vim.keymap.set;
-		set("n", "<leader>ff", builtin.find_files)
-		set("n", "<leader>ft", builtin.help_tags)
-		set("n", "<leader>fw", builtin.live_grep)
-		set("n", "<leader>fb", builtin.current_buffer_fuzzy_find)
-		set("n", "<leader>fs", builtin.grep_string)
-    set("n", "<leader>fo", builtin.lsp_document_symbols)
-    set("n", "<leader>fg", builtin.git_commits)
-		set("n", "<leader>fn", function ()
+		set({"v", "n"}, "<leader>ff", builtin.find_files)
+		set({"v", "n"}, "<leader>ft", builtin.help_tags)
+		set({"v", "n"}, "<leader>fw", builtin.live_grep)
+		set({"v", "n"}, "<leader>fb", builtin.current_buffer_fuzzy_find)
+		set({"v", "n"}, "<leader>fs", builtin.grep_string)
+        set({"v", "n"}, "<leader>fo", builtin.lsp_document_symbols)
+        set({"v", "n"}, "<leader>fg", builtin.git_commits)
+		set({"v", "n"}, "<leader>fn", function ()
 			builtin.find_files { cwd = vim.fn.stdpath "config" }
 		end)
 	end
