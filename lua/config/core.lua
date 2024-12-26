@@ -24,7 +24,7 @@ set.wrap = true
 set.spell = true
 set.spelllang = 'pt_br'
 
-cmd.colorscheme("nightfox")
+cmd.colorscheme("onedark")
 
 cmd([[
   filetype plugin indent on
