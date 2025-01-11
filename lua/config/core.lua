@@ -10,8 +10,10 @@ set.clipboard = "unnamedplus"
 set.completeopt = "noinsert,menuone,noselect"
 set.cursorline = true
 set.expandtab = true
+set.foldmethod = 'indent'
 -- set.foldexpr = "nvim_treesitter#foldexpr()"
-set.foldmethod = "indent"
+-- set.foldmethod = "expr"
+-- vim.cmd([[ set nofoldenable]])
 set.hidden = true
 set.inccommand = "split"
 set.splitbelow = true
