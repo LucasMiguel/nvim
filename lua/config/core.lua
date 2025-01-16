@@ -12,6 +12,7 @@ set.cursorline = true
 set.expandtab = true
 set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldmethod = "expr"
+set.foldenable = false
 set.hidden = true
 set.inccommand = "split"
 set.splitbelow = true
