@@ -55,10 +55,10 @@ return {{
           },
           ellipsis_char = '...',  
           show_labelDetails = true, -- show labelDetails in menu. Disabled by default
-         before = function (entry, vim_item)
+          before = function (entry, vim_item)
             return vim_item
           end
-        })
+        }),
       }
 		}
 	end,

@@ -1,11 +1,11 @@
 local set = vim.opt;
 local cmd = vim.cmd;
 
-set.number = true;
-set.relativenumber= true;
-set.shiftwidth = 2;
-set.smarttab = true;
-set.tabstop = 4;
+set.number = true
+set.relativenumber= true
+set.shiftwidth = 2
+set.smarttab = true
+set.tabstop = 4
 set.clipboard = "unnamedplus"
 set.completeopt = "noinsert,menuone,noselect"
 set.cursorline = true
@@ -24,6 +24,7 @@ set.wildmenu = true
 set.wrap = true
 set.spell = true
 set.spelllang = 'pt_br'
+set.termguicolors = true
 
 cmd.colorscheme("onedark")
 
