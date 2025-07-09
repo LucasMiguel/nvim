@@ -6,26 +6,25 @@ return {
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
     config = function(_, opts)
-      require("barbar").setup(opts)
-
-      -- -- 🎨 Definindo cores personalizadas para a aba ativa
-      -- vim.api.nvim_set_hl(0, "BufferCurrent", { fg = "#ffffff", bg = "#005f87", bold = true })
-      -- vim.api.nvim_set_hl(0, "BufferCurrentMod", { fg = "#ffaf00", bg = "#005f87", bold = true })
-      -- vim.api.nvim_set_hl(0, "BufferCurrentSign", { fg = "#00ffaf", bg = "#005f87", bold = true })
-      -- vim.api.nvim_set_hl(0, "BufferCurrentIndex", { fg = "#ffffff", bg = "#005f87", bold = true })
-    end,
-    opts = {
-      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-      animation = true,
-      highlight_visible = true,
-      sidebar_filetypes = {
-        ['neo-tree'] = {
-          text = "Projeto",
-          align = "center",
-          event = 'BufWipeout'
+      require("barbar").setup({
+        animation = true,
+        highlight_visible = true,
+        sidebar_filetypes = {
+          ['neo-tree'] = {
+            text = "Projeto",
+            align = "center",
+            event = 'BufWipeout'
+          },
         },
-      }
-    },
+        colors = {
+           background = "#1e222a", -- Cor de fundo
+           foreground = "#aeb0b8", -- Cor da fonte
+           inactive_background = "#333333", -- Cor de fundo para buffers inativos
+           inactive_foreground = "#9c0b0b", -- Cor da fonte para buffers inativos
+        }
+      })
+
+      end,
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   }
 }
