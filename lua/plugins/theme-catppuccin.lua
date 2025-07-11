@@ -4,7 +4,7 @@ return {{
   priority = 1000,
   config = function ()
     require("catppuccin").setup({
-      flavour = "macchiato", -- latte, frappe, macchiato, mocha
+      flavour = "mocha", -- latte, frappe, macchiato, mocha
       background = { -- :h background
           light = "latte",
           dark = "frappe",
@@ -47,6 +47,14 @@ return {{
               enabled = true,
               indentscope_color = "",
           },
+      },
+      highlight_overrides = {
+        all = function(colors)
+          return {
+            Visual = { bg = colors.pink }, -- ou outra cor que preferir para seleção
+            CursorLine = { bg = colors.pink }, 
+          }
+        end,
       },
     })
   end
