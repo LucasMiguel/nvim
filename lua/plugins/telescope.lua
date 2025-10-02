@@ -7,31 +7,37 @@ return{{
 	},
 	config = function ()
 		require('telescope').setup {
-      pickers = {
-        find_files = {
-          hidden = true,
-          find_command = {
-            "rg",
-            "--files",
-            "--hidden",
-            "--glob=!**/.git/*",
-            "--glob=!**/.idea/*",
-            "--glob=!**/.vscode/*",
-            "--glob=!**/build/*",
-            "--glob=!**/dist/*",
-            "--glob=!**/yarn.lock",
-            "--glob=!**/package-lock.json",
+          defaults = {
+            file_ignore_patterns = {}, -- remova padrões se quiser que apareçam
           },
-        }
-      },
-			extensions = {
-				wrap_results = true,
+          pickers = {
+            find_files = {
+              hidden = true,
+              find_command = {
+                "rg",
+                "--files",
+                "--hidden",
+                "--no-ignore",
+                "--glob=!**/.git/*",
+                "--glob=!**/.idea/*",
+                "--glob=!**/.vscode/*",
+                "--glob=!**/build/*",
+                "--glob=!**/dist/*",
+                "--glob=!**/yarn.lock",
+                "--glob=!**/package-lock.json",
+                "--glob=!**/node_modules/*",
+                "--glob=!**/vendor/*",
+              },
+            },
+          },
+          extensions = {
+              wrap_results = true,
 
-				fzf = {},
-				["ui-select"] = {
-					require("telescope.themes").get_dropdown {},
-				},
-			}
+              fzf = {},
+              ["ui-select"] = {
+                  require("telescope.themes").get_dropdown {},
+              },
+          }
 		}
 
 		pcall(require("telescope").load_extensions, "fzf")
