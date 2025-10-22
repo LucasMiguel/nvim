@@ -3,7 +3,7 @@ return {{
   config = function()
     require("luxmotion").setup({
       cursor = {
-        duration = 250,
+        duration = 150,
         easing = "ease-out",
         enabled = true,
       },
