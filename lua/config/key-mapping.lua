@@ -36,3 +36,8 @@ kmap({'n'}, '<C-k>', "<C-w>k", opts)
 kmap({'n'}, '<C-l>', "<C-w>l", opts)
 kmap({'n'}, 't', '<cmd>Lspsaga show_line_diagnostics<CR>', opts)
 kmap({'n'}, 'T', '<cmd>Lspsaga show_buf_diagnostics<CR>', opts)
+kmap({"n"}, "<leader>ng", function()
+  require("neogen").generate()
+end, { desc = "Gerar doc (neogen)" })
+
+kmap({"n"}, "<leader>td", "<cmd>TodoTelescope<CR>", opts);
