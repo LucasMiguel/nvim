@@ -40,4 +40,4 @@ kmap({"n"}, "<leader>ng", function()
   require("neogen").generate()
 end, { desc = "Gerar doc (neogen)" })
 
-kmap({"n"}, "<leader>td", "<cmd>TodoTelescope<CR>", opts);
+kmap({"n"}, "<leader>fd", ":Telescope todo-comments<CR>", opts);
