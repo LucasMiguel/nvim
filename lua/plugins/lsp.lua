@@ -1,132 +1,142 @@
-return {{	
-	"williamboman/mason.nvim",
-	dependencies = {	
-		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
-	},
-	config = function()
-		-- Require Mason
-		require("mason").setup({
-		    ui = {
-			icons = {
-			    package_installed = "✓",
-			    package_pending = "➜",
-			    package_uninstalled = "✗"
-			}
-		    }
-		});	
+return {
+{
+  "williamboman/mason.nvim",
+  dependencies = {
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  },
 
-		-- Require Mason LSP COnfig
-		require("mason-lspconfig").setup({
-        automatic_installation = true,
-		    ensure_installed = { 
-			    "lua_ls", 
-			    "rust_analyzer",
-			    "angularls",
-			    "bashls",
-          "ast_grep",
-			    "clangd",
-			    "css_variables",
-			    "cssls",
-			    "cssmodules_ls",
-			    "unocss",
-			    -- "tailwindcss",
-			    "docker_compose_language_service",
-			    "dockerls",
-			    "html",
-			    "lwc_ls",
-			    -- "stimulus_ls",
-			    "templ",
-			    "eslint",
-			    "glint",
-			    "ts_ls",
-			    "vtsls",
-			    "biome",
-			    "jsonls",
-			    "grammarly",
-			    "intelephense",
-			    -- "phpactor",
-			    "sqlls",
-			    "vimls",
-		    },
-		});
+  config = function()
 
-		local capabilities = require("cmp_nvim_lsp").default_capabilities();
-        local node_path = "$HOME/.config/nvm/versions/node/v24.13.1/bin/node"
+    ------------------------------------------------------------------
+    -- Mason Setup
+    ------------------------------------------------------------------
+    require("mason").setup()
 
-	 	local on_attach = function(_, bufnr)
-          local bufopts = { noremap = true, silent = true, buffer = bufnr }
-          vim.keymap.set({'v','n'}, 'gd', vim.lsp.buf.definition, bufopts)
-          vim.keymap.set({'v','n'}, 'gr', vim.lsp.buf.references, bufopts)
-        end
-		
-		local servers = {
-			    lua_ls = {
-              settings = {
-              Lua = {
-                completion = {
-                  callSnippet = "Replace"
-                }
-              }
-            }
+    require("mason-lspconfig").setup({
+      ensure_installed = {
+        "lua_ls",
+        "vtsls",
+        "intelephense",
+        "sqlls",
+        "cssls",
+        "html",
+        "emmet_ls",
+      },
+    })
+
+    ------------------------------------------------------------------
+    -- LSP Capabilities
+    ------------------------------------------------------------------
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+    ------------------------------------------------------------------
+    -- Keymaps on Attach
+    ------------------------------------------------------------------
+    local on_attach = function(_, bufnr)
+      local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+      vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+    end
+
+    ------------------------------------------------------------------
+    -- Servers Configuration
+    ------------------------------------------------------------------
+    local servers = {
+
+      ----------------------------------------------------------------
+      -- Lua (Neovim config)
+      ----------------------------------------------------------------
+      lua_ls = {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+            completion = {
+              callSnippet = "Replace",
+            },
           },
-          rust_analyzer = {},
-			    angularls = {},
-			    bashls = {},
-                ast_grep = {},
-			    clangd = {},
-                css_variables= {},
-			    cssls = {},
-			    cssmodules_ls = {},
-			    unocss = {},
-			    -- tailwindcss = {},
-			    docker_compose_language_service = {},
-			    dockerls = {},
-			    html = {},
-			    lwc_ls = {
-                  cmd = {
-                    node_path,
-                    vim.fn.stdpath("data") .. "/mason/packages/lwc-language-server/node_modules/@salesforce/lwc-language-server/bin/lwc-language-server",
-                    "--stdio"
-                  }
-                },
-                -- stimulus_ls = {},
-			    templ = {},
-			    eslint = {},
-			    glint = {
-                  cmd = { vim.fn.stdpath("data") .. "/mason/bin/glint-language-server", "--stdio" }
-                },
-			    ts_ls = {
-                  cmd = {
-                    node_path,
-                    vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript-language-server/lib/cli.mjs",
-                    "--stdio"
-                  }
-                },
-			    vtsls = {
-                  cmd = {
-                    node_path,
-                    vim.fn.stdpath("data") .. "/mason/packages/vtsls/node_modules/@vtsls/language-server/dist/main.js",
-                    "--stdio"
-                  }
-                },
-			    biome = {},
-			    jsonls = {},
-			    grammarly = {},
-			    intelephense = {},
-			    -- phpactor = {},
-			    sqlls = {},
-                vimls = {},
-		}
+        },
+      },
 
-		for server, config in pairs(servers) do
-          vim.lsp.config(server, vim.tbl_extend("force", {
-            capabilities = capabilities,
-            on_attach = on_attach,
-          }, config))
+      ----------------------------------------------------------------
+      -- JavaScript / TypeScript
+      -- (AngularJS, React, jQuery)
+      ----------------------------------------------------------------
+      vtsls = {
+        settings = {
+          javascript = {
+            suggest = {
+              autoImports = true,
+            },
+          },
+          typescript = {
+            suggest = {
+              autoImports = true,
+            },
+          },
+        },
+      },
 
-          vim.lsp.enable(server)
-        end
-	end,
+      ----------------------------------------------------------------
+      -- PHP
+      ----------------------------------------------------------------
+      intelephense = {
+        settings = {
+          intelephense = {
+            files = {
+              maxSize = 5000000,
+            },
+          },
+        },
+      },
 
-}}
+      ----------------------------------------------------------------
+      -- SQL
+      ----------------------------------------------------------------
+      sqlls = {},
+
+      ----------------------------------------------------------------
+      -- CSS
+      ----------------------------------------------------------------
+      cssls = {},
+
+      ----------------------------------------------------------------
+      -- HTML (AngularJS templates)
+      ----------------------------------------------------------------
+      html = {},
+
+      ----------------------------------------------------------------
+      -- Emmet (React / HTML produtividade)
+      ----------------------------------------------------------------
+      emmet_ls = {
+        filetypes = {
+          "html",
+          "css",
+          "javascript",
+          "javascriptreact",
+          "typescriptreact",
+        },
+      },
+    }
+
+    ------------------------------------------------------------------
+    -- Register & Enable Servers
+    ------------------------------------------------------------------
+    for server, config in pairs(servers) do
+      vim.lsp.config(server, vim.tbl_extend("force", {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }, config))
+
+      vim.lsp.enable(server)
+    end
+
+  end,
+}
+}
