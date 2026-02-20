@@ -7,7 +7,12 @@ vim.o.guicursor = table.concat({
   "i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
   "r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100"
 }, ",")
+vim.opt.clipboard = "unnamedplus"
 
 require("config.key-mapping")
 require("config.lazy")
 require("config.core")
+
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0

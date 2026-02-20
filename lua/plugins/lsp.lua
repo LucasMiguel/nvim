@@ -53,6 +53,7 @@ return {{
 
 		local lspconfig = require('lspconfig');
 		local capabilities = require("cmp_nvim_lsp").default_capabilities();
+        local node_path = "$HOME/.config/nvm/versions/node/v24.13.1/bin/node"
 
 	 	local on_attach = function()
 			local bufopts = {noremap=true, silent=true, buffer=bufnr}
@@ -73,9 +74,9 @@ return {{
           rust_analyzer = {},
 			    angularls = {},
 			    bashls = {},
-          ast_grep = {},
+                ast_grep = {},
 			    clangd = {},
-          css_variables= {},
+                css_variables= {},
 			    cssls = {},
 			    cssmodules_ls = {},
 			    unocss = {},
@@ -83,20 +84,38 @@ return {{
 			    docker_compose_language_service = {},
 			    dockerls = {},
 			    html = {},
-			    lwc_ls = {},
-			    -- stimulus_ls = {},
+			    lwc_ls = {
+                  cmd = {
+                    node_path,
+                    vim.fn.stdpath("data") .. "/mason/packages/lwc-language-server/node_modules/@salesforce/lwc-language-server/bin/lwc-language-server",
+                    "--stdio"
+                  }
+                },
+                -- stimulus_ls = {},
 			    templ = {},
 			    eslint = {},
 			    glint = {},
-			    ts_ls = {},
-			    vtsls = {},
+			    ts_ls = {
+                  cmd = {
+                    node_path,
+                    vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript-language-server/lib/cli.mjs",
+                    "--stdio"
+                  }
+                },
+			    vtsls = {
+                  cmd = {
+                    node_path,
+                    vim.fn.stdpath("data") .. "/mason/packages/vtsls/node_modules/@vtsls/language-server/dist/main.js",
+                    "--stdio"
+                  }
+                },
 			    biome = {},
 			    jsonls = {},
 			    grammarly = {},
 			    intelephense = {},
 			    -- phpactor = {},
 			    sqlls = {},
-          vimls = {},
+                vimls = {},
 		}
 
 		for server, config in pairs(servers) do
