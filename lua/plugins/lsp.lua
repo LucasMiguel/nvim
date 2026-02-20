@@ -51,15 +51,14 @@ return {{
 		    },
 		});
 
-		local lspconfig = require('lspconfig');
 		local capabilities = require("cmp_nvim_lsp").default_capabilities();
         local node_path = "$HOME/.config/nvm/versions/node/v24.13.1/bin/node"
 
-	 	local on_attach = function()
-			local bufopts = {noremap=true, silent=true, buffer=bufnr}
-			vim.keymap.set({'v','n'}, 'gd', vim.lsp.buf.definition, bufopts)
-			vim.keymap.set({'v', 'n'}, 'gr', vim.lsp.buf.references, bufopts)
-		end;
+	 	local on_attach = function(_, bufnr)
+          local bufopts = { noremap = true, silent = true, buffer = bufnr }
+          vim.keymap.set({'v','n'}, 'gd', vim.lsp.buf.definition, bufopts)
+          vim.keymap.set({'v','n'}, 'gr', vim.lsp.buf.references, bufopts)
+        end
 		
 		local servers = {
 			    lua_ls = {
@@ -119,11 +118,13 @@ return {{
 		}
 
 		for server, config in pairs(servers) do
-			lspconfig[server].setup(vim.tbl_extend("force", {
-				capabilities = capabilities,
-				on_attach = on_attach,
-			}, config))
-		end
+          vim.lsp.config(server, vim.tbl_extend("force", {
+            capabilities = capabilities,
+            on_attach = on_attach,
+          }, config))
+
+          vim.lsp.enable(server)
+        end
 	end,
 
 }}
