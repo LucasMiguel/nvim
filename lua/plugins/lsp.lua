@@ -93,7 +93,9 @@ return {{
                 -- stimulus_ls = {},
 			    templ = {},
 			    eslint = {},
-			    glint = {},
+			    glint = {
+                  cmd = { vim.fn.stdpath("data") .. "/mason/bin/glint-language-server", "--stdio" }
+                },
 			    ts_ls = {
                   cmd = {
                     node_path,
