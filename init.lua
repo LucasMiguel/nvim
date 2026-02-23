@@ -9,6 +9,15 @@ vim.o.guicursor = table.concat({
 }, ",")
 vim.opt.clipboard = "unnamedplus"
 
+vim.filetype.add({
+  extension = {
+    js = "javascript",
+    jsx = "javascriptreact",
+    ts = "typescript",
+    tsx = "typescriptreact",
+  },
+})
+
 require("config.key-mapping")
 require("config.lazy")
 require("config.core")
