@@ -4,6 +4,9 @@ return {
   event = "InsertEnter",
   config = function()
     require("copilot").setup({
+      -- Forçar o uso do Node 24.13.1
+      copilot_node_command = "/home/lucasmiguel/.config/nvm/versions/node/v24.13.1/bin/node",
+      
       suggestion = {
         enabled = true,
         auto_trigger = true,
@@ -39,7 +42,6 @@ return {
         cvs = false,
         ["."] = false,
       },
-      copilot_node_command = "node",
       server_opts_overrides = {},
     })
   end,
