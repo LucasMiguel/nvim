@@ -6,11 +6,13 @@ return{
         },
         config = function ()
           require('colorizer').setup({
+           options = {
              filetypes = {
-              "css",
-              "javascript",
-              html = { mode = "foreground" },
-            },
+               "css",
+               "javascript",
+               html = { mode = "foreground" },
+             },
+           }
           })
         end
     }
