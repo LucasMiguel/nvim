@@ -26,7 +26,8 @@ set.spell = true
 set.spelllang = 'pt_br'
 set.termguicolors = true
 
-cmd.colorscheme("catppuccin")
+-- cmd.colorscheme("catppuccin")
+cmd.colorscheme("onedark")
 
 vim.diagnostic.config({
   virtual_text = true,
