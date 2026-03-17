@@ -2,7 +2,7 @@ local set = vim.opt;
 local cmd = vim.cmd;
 
 set.number = true
-set.relativenumber= true
+-- set.relativenumber= true
 set.shiftwidth = 2
 set.smarttab = true
 set.tabstop = 4
@@ -27,7 +27,17 @@ set.spelllang = 'pt_br'
 set.termguicolors = true
 
 -- cmd.colorscheme("catppuccin")
-cmd.colorscheme("onedark")
+-- cmd.colorscheme("onedark")
+-- cmd.colorscheme("atomic")
+cmd.colorscheme("andromeda")
+-- cmd.colorscheme("material")
+-- cmd.colorscheme("everblush")
+-- cmd.colorscheme("vim-monokai-tasty")
+-- cmd.colorscheme("oasis-mirage")
+-- cmd.colorscheme("doom-one")
+-- cmd.colorscheme("monokai-nightasty")
+-- cmd.colorscheme("default")
+
 
 vim.diagnostic.config({
   virtual_text = true,
