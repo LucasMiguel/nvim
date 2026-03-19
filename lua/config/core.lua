@@ -27,16 +27,10 @@ set.spelllang = 'pt_br'
 set.termguicolors = true
 
 -- cmd.colorscheme("catppuccin")
--- cmd.colorscheme("onedark")
+cmd.colorscheme("onedark")
 -- cmd.colorscheme("atomic")
-cmd.colorscheme("andromeda")
--- cmd.colorscheme("material")
--- cmd.colorscheme("everblush")
--- cmd.colorscheme("vim-monokai-tasty")
--- cmd.colorscheme("oasis-mirage")
--- cmd.colorscheme("doom-one")
--- cmd.colorscheme("monokai-nightasty")
--- cmd.colorscheme("default")
+-- cmd.colorscheme("andromeda")
+-- cmd.colorscheme("suspect")
 
 
 vim.diagnostic.config({
