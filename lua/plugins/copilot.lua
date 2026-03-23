@@ -28,7 +28,11 @@ return {
           jump_next = "]]",
           accept = "<CR>",
           refresh = "gr",
-          open = "<M-CR>"
+          open = "<S-CR>"
+        },
+        layout = {
+          position = "right", -- | top | left | right | bottom |
+          ratio = 0.4
         },
       },
       filetypes = {
