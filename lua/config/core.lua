@@ -44,3 +44,16 @@ cmd([[
   filetype plugin indent on
   syntax on
 ]])
+
+vim.opt.diffopt:append({
+  "algorithm:histogram",
+  "indent-heuristic",
+  "linematch:60",
+})
+
+vim.cmd([[
+  highlight DiffAdd guibg=#26332c
+  highlight DiffDelete guibg=#3a2626
+  highlight DiffChange guibg=#2c2c3a
+  highlight DiffText guibg=#3a3a5a
+]])

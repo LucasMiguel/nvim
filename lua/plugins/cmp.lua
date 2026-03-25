@@ -9,7 +9,8 @@ return {{
 		"hrsh7th/cmp-path",
 		{ "L3MON4D3/LuaSnip", build = "make install_jsregexp"},
 		"saadparwaiz1/cmp_luasnip",
-    "roginfarrer/cmp-css-variables",
+        "roginfarrer/cmp-css-variables",
+        "zbirenbaum/copilot-cmp",
 	},
 	config = function()
 		vim.opt.completeopt = { "menu", "menuone", "noselect"}
@@ -22,6 +23,7 @@ return {{
 		
 		cmp.setup {
 			sources = {
+				{name = "copilot"},
 				{name = "nvim_lsp"},
 				{name = "cody"},
 				{name = "path"},

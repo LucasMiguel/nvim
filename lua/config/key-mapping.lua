@@ -41,3 +41,33 @@ kmap({"n"}, "<leader>ng", function()
 end, { desc = "Gerar doc (neogen)" })
 
 kmap({"n"}, "<leader>fd", ":Telescope todo-comments<CR>", opts);
+
+-- Copilot panel
+kmap("n", "<leader>cp", ":Copilot panel<CR>")
+
+-- Chat abrir
+kmap("n", "<leader>cc", function()
+  require("CopilotChat").toggle()
+end)
+
+-- Chat com seleção (visual mode)
+kmap("v", "<leader>cc", function()
+  require("CopilotChat").open({
+    selection = require("CopilotChat.select").visual
+  })
+end)
+
+-- Explicar código
+kmap("v", "<leader>ce", function()
+  require("CopilotChat").ask("Explique esse código")
+end)
+
+-- Refatorar
+kmap("v", "<leader>cr", function()
+  require("CopilotChat").ask("Refatore esse código melhorando legibilidade")
+end)
+
+-- Gerar código
+kmap("n", "<leader>cg", function()
+  require("CopilotChat").ask("Gere código para:")
+end)
