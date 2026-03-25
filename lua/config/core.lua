@@ -11,8 +11,12 @@ set.completeopt = "noinsert,menuone,noselect"
 set.cursorline = true
 set.expandtab = true
 set.foldexpr = "nvim_treesitter#foldexpr()"
+set.foldlevel = 99
+set.foldlevelstart = 99
 set.foldmethod = "expr"
-set.foldenable = false
+set.foldtext = "v:lua.require'foldtext'.foldtext()"
+set.foldenable = true
+set.foldcolumn = "3"
 set.hidden = true
 set.inccommand = "split"
 set.splitbelow = true
@@ -57,3 +61,10 @@ vim.cmd([[
   highlight DiffChange guibg=#2c2c3a
   highlight DiffText guibg=#3a3a5a
 ]])
+
+vim.opt.fillchars = {
+  foldopen = "",   -- aberto
+  foldclose = "",  -- fechado
+  fold = " ",       -- linha sem fold
+  foldsep = " ",    -- separador
+}
