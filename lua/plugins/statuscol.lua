@@ -14,8 +14,9 @@ return{{
     require("statuscol").setup({
       relculright = true,
       segments = {
-        { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
         { text = { builtin.lnumfunc }, click = "v:lua.ScLa" },
+        { text = { " " } },
+        { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
         {
           text = { "%s" }, -- <-- ESSENCIAL: mostra signs (inclui gitsigns)
           click = "v:lua.ScSa"
