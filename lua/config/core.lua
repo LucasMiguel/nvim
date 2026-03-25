@@ -12,7 +12,7 @@ set.cursorline = true
 set.expandtab = true
 set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldlevel = 99
-set.foldlevelstart = 99
+-- set.foldlevelstart = 99
 set.foldmethod = "expr"
 set.foldtext = "v:lua.require'foldtext'.foldtext()"
 set.foldenable = true
@@ -29,6 +29,7 @@ set.wrap = true
 set.spell = true
 set.spelllang = 'pt_br'
 set.termguicolors = true
+vim.o.signcolumn = "yes:1"
 
 -- cmd.colorscheme("catppuccin")
 cmd.colorscheme("onedark")
