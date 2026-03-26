@@ -7,7 +7,7 @@ return{{
   config = function()
     require("CopilotChat").setup({
       debug = false,
-      model="gpt-5 mini",
+      model="gpt-5-mini",
     })
   end
 }}
