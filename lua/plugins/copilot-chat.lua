@@ -17,12 +17,12 @@ return{{
     require("CopilotChat").setup({
       debug = false,
       model="gpt-5-mini",
-      auto_insert_mode = true,
+      system_prompt = load_instructions(),
       picker = "telescope",
-      context = {
-        "Sempre responda em português.",
-        load_instructions(),
-      },
+      context = "buffer",
+      -- context = {
+      --   "Sempre responda em português."
+      -- },
     })
   end
 }}

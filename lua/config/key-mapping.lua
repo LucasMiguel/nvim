@@ -42,9 +42,6 @@ end, { desc = "Gerar doc (neogen)" })
 
 kmap({"n"}, "<leader>fd", ":Telescope todo-comments<CR>", opts);
 
--- Copilot panel
-kmap("n", "<leader>cp", ":Copilot panel<CR>")
-
 -- Chat abrir
 kmap("n", "<leader>cc", function()
   require("CopilotChat").toggle()
@@ -70,4 +67,19 @@ end)
 -- Gerar código
 kmap("n", "<leader>cg", function()
   require("CopilotChat").ask("Gere código para:")
+end)
+
+kmap("n", "<leader>cp", function()
+  require("telescope.builtin").find_files({
+    prompt_title = "Selecionar arquivo para contexto",
+    attach_mappings = function(_, map)
+      map("i", "<CR>", function(prompt_bufnr)
+        local entry = require("telescope.actions.state").get_selected_entry()
+        require("CopilotChat").open({
+          context = { entry.path }
+        })
+      end)
+      return true
+    end
+  })
 end)
