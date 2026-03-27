@@ -22,6 +22,27 @@ return{{
         ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
       },
     },
+    cmdline = {
+      view = "cmdline_popup",
+    },
+    views = {
+      cmdline_popup = {
+        position = {
+          row = "50%",   -- vertical (meio da tela)
+          col = "50%",   -- horizontal (meio da tela)
+        },
+        size = {
+          width = 60,
+          height = "auto",
+        },
+        border = {
+          style = "rounded",
+        },
+        win_options = {
+          winblend = 10,
+        },
+      },
+    },
     -- you can enable a preset for easier configuration
     presets = {
       bottom_search = true, -- use a classic bottom cmdline for search
