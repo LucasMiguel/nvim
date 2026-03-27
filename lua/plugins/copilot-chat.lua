@@ -8,7 +8,7 @@ return{{
   build = "make tiktoken",
   config = function()
     local function load_instructions()
-      local path = vim.fn.getcwd() .. ".github-copilot/copilot-instructions.md"
+      local path = vim.fn.getcwd() .. ".github/copilot-instructions.md"
       if vim.fn.filereadable(path) == 1 then
         return table.concat(vim.fn.readfile(path), "\n")
       end
