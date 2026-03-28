@@ -9,6 +9,9 @@ return{{
     strategies = {
       chat = {
         adapter = "copilot",
+        roles = {
+          user = "Miguel"
+        }
       },
       inline = {
         adapter = "copilot",
