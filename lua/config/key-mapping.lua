@@ -42,44 +42,17 @@ end, { desc = "Gerar doc (neogen)" })
 
 kmap({"n"}, "<leader>fd", ":Telescope todo-comments<CR>", opts);
 
--- Chat abrir
-kmap("n", "<leader>cc", function()
-  require("CopilotChat").toggle()
+-- abrir chat
+kmap({"n", "v"}, "<leader>aa", "<cmd>CodeCompanionChat<cr>")
+
+-- inline edit
+kmap({"n", "v"}, "<leader>ae", "<cmd>CodeCompanion<cr>")
+
+-- fix rápido
+kmap("n", "<leader>cf", function()
+  require("codecompanion").chat("Corrija possíveis bugs neste código")
 end)
 
--- Chat com seleção (visual mode)
-kmap("v", "<leader>cc", function()
-  require("CopilotChat").open({
-    selection = require("CopilotChat.select").visual
-  })
-end)
 
--- Explicar código
-kmap("v", "<leader>ce", function()
-  require("CopilotChat").ask("Explique esse código")
-end)
 
--- Refatorar
-kmap("v", "<leader>cr", function()
-  require("CopilotChat").ask("Refatore esse código melhorando legibilidade")
-end)
 
--- Gerar código
-kmap("n", "<leader>cg", function()
-  require("CopilotChat").ask("Gere código para:")
-end)
-
-kmap("n", "<leader>cp", function()
-  require("telescope.builtin").find_files({
-    prompt_title = "Selecionar arquivo para contexto",
-    attach_mappings = function(_, map)
-      map("i", "<CR>", function(prompt_bufnr)
-        local entry = require("telescope.actions.state").get_selected_entry()
-        require("CopilotChat").open({
-          context = { entry.path }
-        })
-      end)
-      return true
-    end
-  })
-end)
