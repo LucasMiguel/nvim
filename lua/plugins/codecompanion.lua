@@ -20,6 +20,16 @@ return{{
           layout = "vertical", -- estilo VSCode
           width = 0.4,
         },
+        icons = {
+          buffer_sync_all = "󰪴 ",
+          buffer_sync_diff = " ",
+          chat_context = " ",
+          chat_fold = " ",
+          tool_pending = "  ",
+          tool_in_progress = "  ",
+          tool_failure = "  ",
+          tool_success = "  ",
+        },
       },
       cli = {
         window = {
@@ -55,6 +65,28 @@ return{{
           },
         })
       end,
+    },
+    rules = {
+      default = {
+        description = "Collection of common files for all projects",
+        files = {
+          ".clinerules",
+          ".cursorrules",
+          ".goosehints",
+          ".rules",
+          ".windsurfrules",
+          ".github/copilot-instructions.md",
+          "AGENT.md",
+          "AGENTS.md",
+        },
+        is_preset = true,
+      },
+      opts = {
+        chat = {
+          autoload = "default", -- The rule groups to load
+          enabled = true,
+        },
+      },
     },
   },
   config = function(_, opts)
