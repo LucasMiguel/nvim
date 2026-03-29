@@ -42,17 +42,25 @@ end, { desc = "Gerar doc (neogen)" })
 
 kmap({"n"}, "<leader>fd", ":Telescope todo-comments<CR>", opts);
 
+-- CodeCompanionChat
 -- abrir chat
 kmap({"n", "v"}, "<leader>aa", "<cmd>CodeCompanionChat<cr>")
-
 -- inline edit
 kmap({"n", "v"}, "<leader>ae", "<cmd>CodeCompanion<cr>")
 
--- fix rápido
-kmap("n", "<leader>cf", function()
-  require("codecompanion").chat("Corrija possíveis bugs neste código")
+
+-- CopilotChat
+kmap("n", "<leader>cc", function()
+  require("CopilotChat").toggle()
 end)
 
-
+kmap("v", "<leader>cc", function()
+  require("CopilotChat").open({
+    selection = require("CopilotChat.select").visual
+  })
+end)
+kmap("v", "<leader>ce", function()
+  require("CopilotChat").ask("Explique esse código")
+end)
 
 

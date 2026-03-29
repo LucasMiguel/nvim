@@ -15,6 +15,12 @@ return{{
       },
       inline = {
         adapter = "copilot",
+        roles = {
+          user = "Miguel"
+        },
+        opts = {
+          diff = true,
+        },
       },
     },
     display = {
