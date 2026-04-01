@@ -69,3 +69,5 @@ vim.opt.fillchars = {
   fold = " ",       -- linha sem fold
   foldsep = " ",    -- separador
 }
+
+vim.lsp.set_log_level("ERROR");

@@ -36,7 +36,7 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
         cmd = {
-          "/home/lucasmiguel/.config/nvm/versions/node/v24.13.1/bin/node",
+          "/home/lucasmiguel/.config/nvm/versions/node/v24.14.1/bin/node",
           vim.fn.stdpath("data")
             .. "/mason/packages/typescript-language-server/node_modules/typescript-language-server/lib/cli.mjs",
           "--stdio",
@@ -81,6 +81,20 @@ return {
       vim.lsp.config("intelephense", {
         capabilities = capabilities,
         on_attach = on_attach,
+        settings = {
+          intelephense = {
+            telemetry = { enabled = false },
+            environment = {
+              includePaths = {
+                "vendor/laravel/framework/src",
+                "vendor"
+              }
+            },
+            files = {
+              maxSize = 5000000,
+            }
+          }
+        }
       })
 
       vim.lsp.enable("intelephense")

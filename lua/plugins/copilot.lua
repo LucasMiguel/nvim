@@ -4,7 +4,7 @@ return {
   event = "InsertEnter",
   config = function()
     require("copilot").setup({
-      -- Forçar o uso do Node 24.13.1
+      -- Forçar o uso do Node 24.14.1
       copilot_node_command = "/home/lucasmiguel/.config/nvm/versions/node/v24.14.1/bin/node",
       
       suggestion = {
