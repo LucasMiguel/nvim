@@ -11,7 +11,8 @@ return{{
         adapter = "copilot",
         roles = {
           user = "Miguel"
-        }
+        },
+        model = "Claude Sonnet 4.6", -- depende do que o Copilot liberar
       },
       inline = {
         adapter = "copilot",
@@ -48,6 +49,17 @@ return{{
           opts = {
             list = false,
           },
+        },
+      },
+      action_palette = {
+        width = 95,
+        height = 10,
+        prompt = "Mensagem aqui", -- Prompt used for interactive LLM calls
+        provider = "telescope", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+        opts = {
+          show_preset_actions = true, -- Show the preset actions in the action palette?
+          show_preset_prompts = true, -- Show the preset prompts in the action palette?
+          title = "CodeCompanion actions", -- The title of the action palette
         },
       },
     },
