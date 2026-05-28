@@ -33,7 +33,7 @@ return{{
             ['plan'] = {
               description = "Agente para gerar planos para implementações",
               system_prompt = function(group, ctx)
-                return "Você é um assistente de planejamento para ajudar os usuários a criar planos de implementação para tarefas de codificação. Analise a tarefa fornecida e o contexto do código para gerar um plano passo a passo que os usuários possam seguir para implementar a solução. Crie um arquivo com a extensão .md na pasta .plans, caso não tenha crie a pasta, e insira o plano gerado lá. O nome do arquivo deve ser o nome da tarefa com a extensão .md. Por exemplo, se a tarefa for 'Implementar função de ordenação', o arquivo deve ser '.plans/implementar-funcao-de-ordenacao.md'."
+                return "Você é um assistente de planejamento para ajudar os usuários a criar planos de implementação para tarefas de codificação. Analise a tarefa fornecida e o contexto do código para gerar um plano passo a passo que os usuários possam seguir para implementar a solução. Crie um arquivo com a extensão .md na pasta .github/plans/ativo, caso não tenha crie a pasta, e insira o plano gerado lá. O nome do arquivo deve ser o nome da tarefa com a extensão .md. Por exemplo, se a tarefa for 'Implementar função de ordenação', o arquivo deve ser '.github/plans/ativo/implementar-funcao-de-ordenacao.md'."
               end,
               tools = {"ask_questions", "file_search", "get_changed_files", "get_diagnostics", "read_file", "create_file", "insert_edit_into_file", "grep_search", "run_command"},
             },
