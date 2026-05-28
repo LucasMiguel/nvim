@@ -8,14 +8,57 @@ return{{
   opts = {
     strategies = {
       chat = {
-        adapter = "copilot",
+        adapter = {
+          name = "copilot",
+          model = "claude-sonnet-4.6",
+        },
         roles = {
           user = "Miguel"
         },
-        model = "Claude Sonnet 4.6", -- depende do que o Copilot liberar
+        model = "Claude Sonnet 4.6",
+        tools = {
+          groups = {
+            ['ask'] = {
+              description = "Agente para perguntas e respostas",
+              system_prompt = function(group, ctx)
+                return "Você é um assistente de perguntas e respostas para ajudar os usuários a obter informações sobre o código. Responda às perguntas dos usuários com base no contexto do código e forneça explicações claras e concisas."
+              end,
+              tools = {"ask_questions", "file_search", "get_changed_files", "get_diagnostics", "read_file", "grep_search", "web_search"},
+              opts = {
+                collapse_tools = true,
+                ignore_system_prompt = true, -- Remove the chat's default system prompt
+                ignore_tool_system_prompt = true, -- Remove the default tool system prompt
+              },
+            },
+            ['plan'] = {
+              description = "Agente para gerar planos para implementações",
+              system_prompt = function(group, ctx)
+                return "Você é um assistente de planejamento para ajudar os usuários a criar planos de implementação para tarefas de codificação. Analise a tarefa fornecida e o contexto do código para gerar um plano passo a passo que os usuários possam seguir para implementar a solução. Crie um arquivo com a extensão .md na pasta .plans, caso não tenha crie a pasta, e insira o plano gerado lá. O nome do arquivo deve ser o nome da tarefa com a extensão .md. Por exemplo, se a tarefa for 'Implementar função de ordenação', o arquivo deve ser '.plans/implementar-funcao-de-ordenacao.md'."
+              end,
+              tools = {"ask_questions", "file_search", "get_changed_files", "get_diagnostics", "read_file", "create_file", "insert_edit_into_file", "grep_search", "run_command"},
+            },
+            ['implement'] = {
+              description = "Agente para implementação",
+              system_prompt = function(group, ctx)
+                return "Você é um assistente de implementação para ajudar os usuários a implementar soluções para tarefas de codificação. Analise a tarefa fornecida e o contexto do código para gerar uma implementação que os usuários possam seguir para resolver o problema. Insira a implementação diretamente nos arquivos de código relevantes, fazendo as edições necessárias para integrar a solução ao código existente. Seguindo o plano anexado como contexto."
+              end,
+              tools = {"ask_questions", "file_search", "get_changed_files", "get_diagnostics", "read_file", "create_file", "insert_edit_into_file", "grep_search", "run_command"},
+            },
+            ['change'] = {
+              description = "Agente alterações no código",
+              system_prompt = function(group, ctx)
+                return "Você é um assistente de alterações de código para ajudar os usuários a fazer alterações específicas no código. Analise a tarefa fornecida e o contexto do código para gerar as alterações necessárias que os usuários possam seguir para modificar o código existente. Insira as alterações diretamente nos arquivos de código relevantes, fazendo as edições necessárias para integrar as mudanças ao código existente."
+              end,
+              tools = {"ask_questions", "file_search", "get_changed_files", "get_diagnostics", "read_file", "create_file", "insert_edit_into_file", "grep_search", "run_command"},
+            },
+          },
+        }
       },
       inline = {
-        adapter = "copilot",
+        adapter = {
+          name = "copilot",
+          model = "claude-sonnet-4.6",
+        },
         roles = {
           user = "Miguel"
         },
@@ -76,17 +119,6 @@ return{{
         },
       },
     },
-    adapters = {
-      copilot = function()
-        return require("codecompanion.adapters").extend("copilot", {
-          schema = {
-            model = {
-              default = "gpt-4o", -- depende do que o Copilot liberar
-            },
-          },
-        })
-      end,
-    },
     rules = {
       default = {
         description = "Collection of common files for all projects",
@@ -96,9 +128,12 @@ return{{
           ".goosehints",
           ".rules",
           ".windsurfrules",
-          ".github/copilot-instructions.md",
           "AGENT.md",
           "AGENTS.md",
+          {
+            path = ".github",
+            files = "*.md"
+          },
         },
         is_preset = true,
       },

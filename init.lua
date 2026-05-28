@@ -30,6 +30,7 @@ local orig_cmdheight = vim.opt.cmdheight:get()
 vim.opt.cmdheight = 1
 
 vim.g.copilot_enabled = true
+vim.lsp.set_log_level("WARN")
 
 -- Tipos de arquivo onde Copilot funcionará
 vim.g.copilot_filetypes = {
