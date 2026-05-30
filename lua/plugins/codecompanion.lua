@@ -153,6 +153,13 @@ return{{
         },
       },
     },
+    prompt_library = {
+      markdown = {
+        dirs = {
+          vim.fn.stdpath("config") .. "/lua/config/prompts", -- Can be relative
+        },
+      },
+    },
   },
   config = function(_, opts)
     require("codecompanion").setup(opts)
