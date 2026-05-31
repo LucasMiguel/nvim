@@ -5,7 +5,9 @@ return{{
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "j-hui/fidget.nvim"
+    "j-hui/fidget.nvim",
+    "ravitemer/codecompanion-history.nvim",
+    "ravitemer/mcphub.nvim",
   },
   opts = {
     strategies = {
@@ -157,6 +159,15 @@ return{{
       markdown = {
         dirs = {
           vim.fn.stdpath("config") .. "/lua/config/prompts", -- Can be relative
+        },
+      },
+    },
+    extensions = {
+      history = {
+        enabled = true,
+        opts = {
+          keymap = "gh",           -- keymap para abrir histórico
+          save_chat_keymap = "sc", -- keymap para salvar chat atual
         },
       },
     },

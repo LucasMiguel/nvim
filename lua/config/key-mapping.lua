@@ -48,19 +48,23 @@ kmap({"n", "v"}, "<leader>aa", "<cmd>CodeCompanionChat<cr>")
 -- inline edit
 kmap({"n", "v"}, "<leader>ae", "<cmd>CodeCompanion<cr>")
 
+kmap({"n", "v"}, "<leader>cc", "<cmd>CodeCompanionActions <cr>")
 
--- CopilotChat
-kmap("n", "<leader>cc", function()
-  require("CopilotChat").toggle()
-end)
+kmap({"n", "v"}, "<leader>ah", "<cmd>CodeCompanionHistory <cr>")
 
-kmap("v", "<leader>cc", function()
-  require("CopilotChat").open({
-    selection = require("CopilotChat.select").visual
-  })
-end)
-kmap("v", "<leader>ce", function()
-  require("CopilotChat").ask("Explique esse código")
-end)
+
+-- -- CopilotChat
+-- kmap("n", "<leader>cc", function()
+--   require("CopilotChat").toggle()
+-- end)
+--
+-- kmap("v", "<leader>cc", function()
+--   require("CopilotChat").open({
+--     selection = require("CopilotChat.select").visual
+--   })
+-- end)
+-- kmap("v", "<leader>ce", function()
+--   require("CopilotChat").ask("Explique esse código")
+-- end)
 
 
