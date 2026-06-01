@@ -60,7 +60,7 @@ return{{
               system_prompt = function(group, ctx)
                 return agents.load("dommus_jira")
               end,
-              tools = {"ask_questions", "file_search", "get_changed_files", "get_diagnostics", "read_file", "create_file", "insert_edit_into_file", "grep_search", "run_command"},
+              tools = {"ask_questions", "file_search", "get_changed_files", "get_diagnostics", "read_file", "create_file", "insert_edit_into_file", "grep_search", "run_command" },
             },
           },
         }
