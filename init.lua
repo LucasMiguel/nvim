@@ -2,6 +2,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 vim.opt.termguicolors = true;
 
+local node20 = "/home/lucasmiguel/.config/nvm/versions/node/v20.20.2/bin"
+vim.env.PATH = node20 .. ":" .. vim.env.PATH
+
 vim.o.guicursor = table.concat({
   "n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
   "i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",

@@ -8,6 +8,8 @@ return {
     require("mcphub").setup({
       port = 37373,
       config = vim.fn.expand("~/.config/mcp/servers.json"),
+      cmd = "/home/lucasmiguel/.config/nvm/versions/node/v20.20.2/bin/mcp-hub",
+      auto_start = true,
       log = {
         level = vim.log.levels.WARN,
         to_file = false,
