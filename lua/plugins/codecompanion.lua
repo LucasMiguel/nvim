@@ -40,6 +40,11 @@ return{{
                 return agents.load("plan")
               end,
               tools = {"ask_questions", "file_search", "get_changed_files", "get_diagnostics", "read_file", "create_file", "insert_edit_into_file", "grep_search", "run_command"},
+              opts = {
+                collapse_tools = true,
+                ignore_system_prompt = true, -- Remove the chat's default system prompt
+                ignore_tool_system_prompt = true, -- Remove the default tool system prompt
+              },
             },
             ['implement'] = {
               description = "Agente para implementação",
@@ -47,6 +52,11 @@ return{{
                 return agents.load("implement")
               end,
               tools = {"ask_questions", "file_search", "get_changed_files", "get_diagnostics", "read_file", "create_file", "insert_edit_into_file", "grep_search", "run_command"},
+              opts = {
+                collapse_tools = true,
+                ignore_system_prompt = true, -- Remove the chat's default system prompt
+                ignore_tool_system_prompt = true, -- Remove the default tool system prompt
+              },
             },
             ['change'] = {
               description = "Agente alterações no código",
@@ -54,6 +64,11 @@ return{{
                 return agents.load("change")
               end,
               tools = {"ask_questions", "file_search", "get_changed_files", "get_diagnostics", "read_file", "create_file", "insert_edit_into_file", "grep_search", "run_command"},
+              opts = {
+                collapse_tools = true,
+                ignore_system_prompt = true, -- Remove the chat's default system prompt
+                ignore_tool_system_prompt = true, -- Remove the default tool system prompt
+              },
             },
             ['dommus_jira'] = {
               description = "Agente com ligação com workflow do jira",
@@ -61,6 +76,11 @@ return{{
                 return agents.load("dommus_jira")
               end,
               tools = {"ask_questions", "file_search", "get_changed_files", "get_diagnostics", "read_file", "create_file", "insert_edit_into_file", "grep_search", "run_command" },
+              opts = {
+                collapse_tools = true,
+                ignore_system_prompt = true, -- Remove the chat's default system prompt
+                ignore_tool_system_prompt = true, -- Remove the default tool system prompt
+              },
             },
           },
         }

@@ -1,150 +1,62 @@
 ---
-name: Criação da Task no Jira
-interaction: chat 
-description: Gera uma task no jira com base no plano
+name: Criar Task Jira
+interaction: chat
+description: Cria uma task Jira baseada em um plano aprovado
 opts:
-  alias: create-task-jira
-  auto_submit: false
+  alias: criar-task-jira
   placement: new
+  auto_submit: false
   stop_context_insertion: true
-# mcp_servers:
-
 ---
 
 ## system
 
----
-## ETAPA 1 — Ler o plano
+Leia o plano informado.
 
-Ler o markdown informado.
+Fluxo obrigatório:
 
----
+1. Ler o plano
+2. Converter linguagem técnica para funcional
+3. Criar issue Jira
+4. Obter chave Jira
+5. Gerar slug
+6. Criar branch
 
-## ETAPA 2 — Converter linguagem
+Template Jira:
 
-Transformar:
-- linguagem técnica
-- arquitetura
-- detalhes internos
+# Objetivo
 
-em:
+# Contexto
 
-- descrição funcional
-- linguagem orientada a produto
-- critérios de aceite
-- impacto de negócio
+# Escopo
 
----
+# Critérios de aceite
 
-# TEMPLATE DA TASK JIRA
+# Observações técnicas
 
-## Objetivo
+Configuração:
 
-Descrição funcional simples e objetiva.
+Tipo: tarefa
 
----
+Board: DESENVOLVIMENTO 2026 (caso o quadro não seja passado) 
 
-## Contexto
+Status: Em andamento
 
-Problema de negócio resolvido.
+Sprint: Sprint ativa
 
----
+Após criar a issue:
 
-## Escopo
+Executar:
 
-O que será alterado.
-
----
-
-## Critérios de aceite
-
-- [ ]
-- [ ]
-- [ ]
-
----
-
-## Observações técnicas
-
-Referenciar apenas informações orientadas ao produto e rastreabilidade:
-- Link para o plano técnico detalhado (ex.: `Plano técnico detalhado: .github/plans/<slug>.md`)
-- Integrações externas envolvidas (ex.: qual API, serviço ou fluxo análogo)
-- Origem de dados relevante para o negócio (ex.: de onde vêm os tokens, registros ou configurações)
-- Analogias com fluxos já existentes no sistema
-
-NÃO incluir detalhes internos de implementação como versão de PHP, padrões de código ou restrições de sintaxe.
-
----
-
-# CONFIGURAÇÕES DA ISSUE
-
-## Tipo
-
-Incremento
-
-## Board
-
-DESENVOLVIMENTO 2026
-
-## Sprint
-
-Sprint ativa
-
-## Status inicial
-
-Em andamento
-
-## Responsável
-
-Usuário autenticado no Jira
-
----
-
-# APÓS CRIAR A ISSUE
-
-Você deve:
-
-1. Obter a chave Jira
-2. Gerar slug kebab-case
-3. Criar branch git
-
----
-
-# PADRÃO DA BRANCH
-
-Formato:
-
-```txt
-<ISSUE>-<slug>
-```
-
-Exemplo:
-
-```txt
-D2K25-1407-vincular-comissao-usuario-rh
-```
-
----
-
-# COMANDO GIT OBRIGATÓRIO
-
-```bash
 git checkout -b <ISSUE>-<slug>
-```
 
----
+Responder:
 
-# APÓS CRIAR A BRANCH
-
-Você deve responder:
-
-```txt
 Task Jira criada com sucesso.
 Branch criada e pronta para implementação.
-```
-
----
 
 ## user
 
-@{dommus_jira} 
+@{dommus_jira}
+
+$input
