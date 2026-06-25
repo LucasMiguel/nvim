@@ -41,3 +41,27 @@ vim.g.copilot_filetypes = {
   ["vim"] = false,        -- Desabilitado em arquivos Vim
   ["markdown"] = false,   -- Desabilitado em Markdown
 }
+
+-- Atualização de arquivos externos
+vim.opt.autoread = true
+vim.opt.updatetime = 500
+
+local group = vim.api.nvim_create_augroup("external_file_changes", { clear = true })
+
+vim.api.nvim_create_autocmd({
+  "BufEnter",
+  "CursorHold",
+  "CursorHoldI",
+}, {
+  group = group,
+  callback = function()
+    vim.cmd("silent! checktime")
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+  group = group,
+  callback = function()
+    vim.notify("Arquivo atualizado externamente", vim.log.levels.INFO)
+  end,
+})
