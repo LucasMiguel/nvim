@@ -65,3 +65,14 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
     vim.notify("Arquivo atualizado externamente", vim.log.levels.INFO)
   end,
 })
+
+vim.opt.autoread = true
+
+vim.api.nvim_create_autocmd({
+  "FocusGained",
+  "BufEnter",
+}, {
+  callback = function()
+    vim.cmd("silent! checktime")
+  end,
+})
