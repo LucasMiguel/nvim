@@ -32,15 +32,14 @@ vim.g.loaded_perl_provider = 0
 local orig_cmdheight = vim.opt.cmdheight:get()
 vim.opt.cmdheight = 1
 
-vim.g.copilot_enabled = true
 vim.lsp.set_log_level("WARN")
 
 -- Tipos de arquivo onde Copilot funcionará
-vim.g.copilot_filetypes = {
-  ["*"] = true,           -- Habilitado em todos os arquivos
-  ["vim"] = false,        -- Desabilitado em arquivos Vim
-  ["markdown"] = false,   -- Desabilitado em Markdown
-}
+-- vim.g.copilot_filetypes = {
+--   ["*"] = true,           -- Habilitado em todos os arquivos
+--   ["vim"] = false,        -- Desabilitado em arquivos Vim
+--   ["markdown"] = false,   -- Desabilitado em Markdown
+-- }
 
 -- Atualização de arquivos externos
 vim.opt.autoread = true
