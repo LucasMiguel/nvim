@@ -10,16 +10,25 @@ return{{
     "ravitemer/mcphub.nvim",
   },
   opts = {
+    adapters = {
+      http = {
+        ollama = function()
+          return require("codecompanion.adapters").extend("ollama", {
+            schema = {
+              model = {
+                default = "ornith:9b",
+              },
+            },
+          })
+        end,
+      },
+    },
     strategies = {
       chat = {
-        adapter = {
-          name = "copilot",
-          model = "claude-sonnet-4.6",
-        },
+        adapter = "ollama",
         roles = {
           user = "Miguel"
         },
-        model = "Claude Sonnet 4.6",
         tools = {
           groups = {
             ['ask'] = {
@@ -86,10 +95,7 @@ return{{
         }
       },
       inline = {
-        adapter = {
-          name = "copilot",
-          model = "claude-sonnet-4.6",
-        },
+        adapter = "ollama",
         roles = {
           user = "Miguel"
         },
