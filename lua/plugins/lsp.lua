@@ -24,6 +24,11 @@ return {
       -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+      -- Garante suporte a additionalTextEdits (necessário para auto-import)
+      capabilities.textDocument.completion.completionItem.resolveSupport = {
+        properties = { "documentation", "detail", "additionalTextEdits" },
+      }
+
       local on_attach = function(_, bufnr)
         local opts = { buffer = bufnr }
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -42,6 +47,14 @@ return {
           vim.fn.stdpath("data")
             .. "/mason/packages/typescript-language-server/node_modules/typescript-language-server/lib/cli.mjs",
           "--stdio",
+        },
+        init_options = {
+          preferences = {
+            -- Habilita auto-import ao aceitar sugestão
+            includeCompletionsForModuleExports = true,
+            includeCompletionsWithInsertText = true,
+            allowIncompleteCompletions = true,
+          },
         },
       })
 

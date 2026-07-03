@@ -43,9 +43,11 @@ return{{
           border = "rounded",
         },
       },
-      trigger = { prefetch_on_insert = false },
       list = {
-        selection = { preselect = true, auto_insert = false }
+        selection = { 
+          preselect = true, 
+          auto_insert = false 
+        }
       }
     },
     fuzzy = { implementation = "prefer_rust_with_warning" }
