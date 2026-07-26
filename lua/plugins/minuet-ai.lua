@@ -11,7 +11,7 @@ return {
           auto_trigger_ft = { "*" },
           keymap = {
               accept = "<A-A>",
-              accept_line = "L",
+              accept_line = "<C-l>",
               accept_n_lines = "<A-a>",
               prev = "<A-[>",
               next = "<A-]>",

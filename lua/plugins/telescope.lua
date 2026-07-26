@@ -8,7 +8,9 @@ return{{
 	config = function ()
 		require('telescope').setup {
           defaults = {
-            file_ignore_patterns = {}, -- remova padrões se quiser que apareçam
+            file_ignore_patterns = {
+              "tests/"
+            }, -- remova padrões se quiser que apareçam
           },
           pickers = {
             find_files = {
