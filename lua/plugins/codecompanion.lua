@@ -12,11 +12,20 @@ return{{
   opts = {
     adapters = {
       http = {
-        ollama = function()
-          return require("codecompanion.adapters").extend("ollama", {
+        -- ollama = function()
+        --   return require("codecompanion.adapters").extend("ollama", {
+        --     schema = {
+        --       model = {
+        --         default = "ornith:9b",
+        --       },
+        --     },
+        --   })
+        -- end,
+        gemini = function()
+          return require("codecompanion.adapters").extend("gemini", {
             schema = {
               model = {
-                default = "ornith:9b",
+                default = "gemini-2.5-flash", -- Modelo rápido e gratuito
               },
             },
           })
@@ -25,7 +34,7 @@ return{{
     },
     strategies = {
       chat = {
-        adapter = "ollama",
+        adapter = "gemini",
         roles = {
           user = "Miguel"
         },
@@ -95,7 +104,7 @@ return{{
         }
       },
       inline = {
-        adapter = "ollama",
+        adapter = "gamini",
         roles = {
           user = "Miguel"
         },

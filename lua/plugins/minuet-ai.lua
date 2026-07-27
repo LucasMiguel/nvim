@@ -18,7 +18,7 @@ return {
               dismiss = "<A-e>",
           },
       },
-      provider = 'openai_fim_compatible',
+      provider = 'gemini',
       n_completions = 1, -- recommend for local model for resource saving
       -- I recommend beginning with a small context window size and incrementally
       -- expanding it, depending on your local computing power. A context window
@@ -27,18 +27,30 @@ return {
       -- you should adjust the context window to a larger value.
       context_window = 512,
       provider_options = {
-          openai_fim_compatible = {
-              -- For Windows users, TERM may not be present in environment variables.
-              -- Consider using APPDATA instead.
-              api_key = 'TERM',
-              name = 'Ollama',
-              end_point = 'http://localhost:11434/v1/completions',
-              model = 'qwen2.5-coder:7b',
-              optional = {
-                  max_tokens = 56,
-                  top_p = 0.9,
+          -- openai_fim_compatible = {
+          --     -- For Windows users, TERM may not be present in environment variables.
+          --     -- Consider using APPDATA instead.
+          --     api_key = 'TERM',
+          --     name = 'Ollama',
+          --     end_point = 'http://localhost:11434/v1/completions',
+          --     model = 'qwen2.5-coder:7b',
+          --     optional = {
+          --         max_tokens = 56,
+          --         top_p = 0.9,
+          --     },
+          -- },
+          gemini = {
+            model = "gemini-2.5-flash", -- Modelo rápido e gratuito
+            stream = true,              -- Ativa streaming para respostas rápidas
+            optional = {
+              generationConfig = {
+                maxOutputTokens = 512,  -- Controla o tamanho máximo da sugestão
+                temperature = 0.2,      -- Menor criatividade = código mais assertivo
               },
+            },
           },
+          throttle = 2000,
+          debounce = 400,
       },
     }
   end,

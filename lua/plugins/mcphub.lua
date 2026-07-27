@@ -6,6 +6,7 @@ return {
   build = "npm install -g mcp-hub@latest",
   config = function()
     require("mcphub").setup({
+      use_bundled_binary = false,
       port = 37373,
       config = vim.fn.expand("~/.config/mcp/servers.json"),
       cmd = "/home/lucasmiguel/.config/nvm/versions/node/v20.20.2/bin/mcp-hub",
