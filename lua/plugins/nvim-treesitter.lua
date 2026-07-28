@@ -30,10 +30,14 @@ return {{
             "vimdoc",
             "yaml",
           },
-          sync_install = true,
+          sync_install = false,
           auto_install = true,
-          indent = { enable = true },
-          highlight = { enable = true },
+          highlight = {
+            enable = true,
+          },
+          indent = {
+            enable = true,
+          },
         })
 	end,
 }}
