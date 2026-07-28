@@ -1,40 +1,39 @@
 return {{
 	"nvim-treesitter/nvim-treesitter",
 	branch = "main",
+    lazy = false,
 	build = ":TSUpdate",
-	event = { "VeryLazy" },
-	version = false,
 	config = function()
-		local opts = {}
-		opts.ensure_installed = {
-			"angular",
-			"bash",
-			"c",
-			"css",
-			"csv",
-			"dart",
-			"dockerfile",
-			"html",
-			"javascript",
-			"json",
-			"json5",
-			"lua",
-			"php",
-			"php_only",
-			"python",
-			"regex",
-			"scss",
-			"sql",
-			"tsx",
-			"typescript",
-			"vim",
-			"vimdoc",
-			"yaml",
-		}
-		opts.sync_install = true
-		opts.auto_install = true
-		opts.indent = { enable = true }
-		opts.highlight = { enable = true }
-		require("nvim-treesitter").setup(opts)
+		require("nvim-treesitter").setup({
+          ensure_installed = {
+            "angular",
+            "bash",
+            "c",
+            "css",
+            "csv",
+            "dart",
+            "dockerfile",
+            "html",
+            "javascript",
+            "json",
+            "json5",
+            "lua",
+            "php",
+            "php_only",
+            "python",
+            "regex",
+            "scss",
+            "sql",
+            "tsx",
+            "typescript",
+            "vim",
+            "vimdoc",
+            "yaml",
+          },
+          sync_install = true,
+          auto_install = true,
+          indent = { enable = true },
+          highlight = { enable = true },
+        })
 	end,
 }}
