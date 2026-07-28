@@ -1,6 +1,6 @@
 return {{
 	"nvim-treesitter/nvim-treesitter",
-	branch = "master",
+	branch = "main",
 	build = ":TSUpdate",
 	event = { "VeryLazy" },
 	version = false,
@@ -35,6 +35,6 @@ return {{
 		opts.auto_install = true
 		opts.indent = { enable = true }
 		opts.highlight = { enable = true }
-		require("nvim-treesitter.configs").setup(opts)
+		require("nvim-treesitter").setup(opts)
 	end,
 }}

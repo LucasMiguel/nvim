@@ -22,16 +22,17 @@ return{{
       nerd_font_variant = 'mono'
     },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'minuet' },
+      default = { 'lsp', 'path', 'snippets', 'buffer'},
+      -- default = { 'lsp', 'path', 'snippets', 'buffer', 'minuet' },
       -- For manual completion only, remove 'minuet' from default
       providers = {
-        minuet = {
-          name = 'minuet',
-          module = 'minuet.blink',
-          async = true,
-          timeout_ms = 3000,
-          score_offset = 50, -- Gives minuet higher priority among suggestions
-        },
+        -- minuet = {
+        --   name = 'minuet',
+        --   module = 'minuet.blink',
+        --   async = true,
+        --   timeout_ms = 3000,
+        --   score_offset = 50, -- Gives minuet higher priority among suggestions
+        -- },
       },
     },
     -- completion = { documentation = { auto_show = false } },
